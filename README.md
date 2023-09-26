@@ -1,0 +1,2 @@
+# LifeOnJS
+JavaScript code notes
