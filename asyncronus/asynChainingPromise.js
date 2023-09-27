@@ -1,39 +1,33 @@
-const withDrawMoney = (amount) => {
-    return new Promise((resolve, reject) => {
+const withDrawMoney = (amount) => new Promise((resolve, reject) => {
         setTimeout(() => {
-            if (amount < 100){
+            if (amount < 100) {
                 reject(new Error('Uang tidak bisa di ambil'));
                 return;
             }
             resolve(amount);
         }, 1000);
-    })
-};
+    });
 
-const buyTicketBioskop = (money) => {
-    return new Promise((resolve, reject) =>{
+const buyTicketBioskop = (money) => new Promise((resolve, reject) => {
         setTimeout(() => {
             if (money < 10) {
-                reject (new Error('Uang tidak dapat membeli tiker'));
+                reject(new Error('Uang tidak dapat membeli tiker'));
             }
             // if true have ticker
             resolve(true);
         }, 1000);
     });
-};
 
-const goInsideCinema = (ticket) => {
-    return new Promise((resolve, reject) => {
+const goInsideCinema = (ticket) => new Promise((resolve, reject) => {
         setTimeout(() => {
             if (!ticket) {
-                reject (new Error('no ticket'));
+                reject(new Error('no ticket'));
             }
             resolve('enjoy the cinema');
         }, 1000);
     });
-};
 
-const watchingCinema = () =>{
+const watchingCinema = () => {
     withDrawMoney(200)
         .then((money) => buyTicketBioskop(money))
         .then((ticket) => goInsideCinema(ticket))
@@ -41,4 +35,8 @@ const watchingCinema = () =>{
         .catch((err) => console.log(err.message));
 };
 
-watchingCinema();
+const runAsynChainingPromise = () => {
+    watchingCinema();
+};
+
+module.exports = { runAsynChainingPromise };

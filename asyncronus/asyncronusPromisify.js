@@ -1,23 +1,27 @@
-const {users} = require("./users");
-const {promisify} = require('util');
+const { promisify } = require('util');
+const { users } = require('./users');
 
 const getUser = (isOffline, callback) => {
     setTimeout(() => {
         const user = [...users];
-        if (isOffline){
+        if (isOffline) {
             callback(new Error('Failed get data users'), null);
-            return
+            return;
         }
         callback(null, user);
     }, 3000);
 };
 
-const getUserPromisify = promisify(getUser);
+const runAsyncronusPromisify = () => {
+    const getUserPromisify = promisify(getUser);
 
-getUserPromisify(true)
-    .then(users => console.log(users))
-    .catch(err => console.log(err.message));
+    getUserPromisify(true)
+    .then((usersValue) => console.log(usersValue))
+    .catch((err) => console.log(err.message));
 
-getUserPromisify(false)
-    .then(users => console.log(users))
-    .catch(err => console.log(err.message));
+    getUserPromisify(false)
+    .then((usersValue) => console.log(usersValue))
+    .catch((err) => console.log(err.message));
+};
+
+module.exports = { runAsyncronusPromisify };

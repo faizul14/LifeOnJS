@@ -1,11 +1,10 @@
-function getUser (callback) {
-
-    setTimeout( ()=> {
+/* eslint-disable no-unused-vars */
+function getUser(callback) {
+    setTimeout(() => {
         const user = ['faezol', 'padli', 'muhammad'];
-        callback(user)
-    },3000 );
-
-};
+        callback(user);
+    }, 3000);
+}
 
 const userCall = (user) => {
     console.log(user);
@@ -13,8 +12,8 @@ const userCall = (user) => {
 
 // getUser(userCall);
 
-function getUserWithError (isOffline, callback) {
-    setTimeout( ()=> {
+function getUserWithError(isOffline, callback) {
+    setTimeout(() => {
         const user = ['faezol', 'padli', 'muhammad'];
         if (isOffline) {
             callback(new Error('Conection timeout'), null);
@@ -22,16 +21,27 @@ function getUserWithError (isOffline, callback) {
         }
         callback(null, user);
     }, 3000);
-};
+}
 
 const userCallWithError = (error, user) => {
     if (error) {
         console.log('Terjadi kesalahana saat meminta data:', error.message);
     }
     console.log(user);
-}
+};
 
 getUserWithError(false, userCallWithError);
-for(let i = 0; i < 10; i++){
+// eslint-disable-next-line no-plusplus
+for (let i = 0; i < 10; i++) {
     console.log('melakukan proses ke', i);
 }
+
+const runAsyncronusCallback = () => {
+    getUserWithError(false, userCallWithError);
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < 100; i++) {
+        console.log('melakukan proses ke', i);
+    }
+};
+
+module.exports = { runAsyncronusCallback };
