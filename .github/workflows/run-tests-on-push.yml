@@ -1,0 +1,34 @@
+name: Run Tests and ESLint on Push
+
+on:
+  push:
+    branches:
+      - master  # Ganti dengan nama branch yang Anda inginkan
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout kode sumber
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run ESLint
+      run: npm run lint
+
+    - name: Run Jest Tests
+      run: npm run test --if-present
+
+    - name: Check ESLint and Jest exit codes
+      run: |
+        if [[ ${{ steps.Run ESLint.outcome }} == 'failure' ]]; then
+          echo "ESLint checks failed, preventing branch push!"
+          exit 1
+        fi
+        if [[ ${{ steps.Run Jest Tests.outcome }} == 'failure' ]]; then
+          echo "Jest tests failed, preventing branch push!"
+          exit 1
+        fi
