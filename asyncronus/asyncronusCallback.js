@@ -14,7 +14,7 @@ const userCall = (user) => {
 
 function getUserWithError(isOffline, callback) {
     setTimeout(() => {
-        const user = ['faezol', 'padli', 'muhammad'];
+        const user = ['faezol', 'padli', 'muhammad1'];
         if (isOffline) {
             callback(new Error('Conection timeout'), null);
             return;
@@ -30,11 +30,11 @@ const userCallWithError = (error, user) => {
     console.log(user);
 };
 
-getUserWithError(false, userCallWithError);
+// getUserWithError(false, userCallWithError);
 // eslint-disable-next-line no-plusplus
-for (let i = 0; i < 10; i++) {
-    console.log('melakukan proses ke', i);
-}
+// for (let i = 0; i < 10; i++) {
+//     console.log('melakukan proses ke', i);
+// }
 
 const runAsyncronusCallback = () => {
     getUserWithError(false, userCallWithError);

@@ -13,13 +13,13 @@ const { runAsyncronusCallback } = require('./asyncronus/asyncronusCallback');
 const { runAsyncronus } = require('./asyncronus/asyncronus');
 
 // run runAsyncronus
-runAsyncronus();
+// runAsyncronus();
 
 // run runAsyncronusCallback
 // runAsyncronusCallback();
 
 // run runAsyncronusPromise
-// runAsyncronusPromise();
+runAsyncronusPromise();
 
 // run  runAsyncronusPromisify
 // runAsyncronusPromisify();

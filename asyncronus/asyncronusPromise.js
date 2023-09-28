@@ -9,10 +9,8 @@ const getUser = (isOffline) => new Promise((resolve, reject) => {
         }, 3000);
     });
 
-const runAsyncronusPromise = () => {
-    getUser(true)
+const runAsyncronusPromise = () => getUser(false)
     .then((users) => console.log(users))
     .catch((err) => console.log(err.message));
-};
 
-module.exports = { runAsyncronusPromise };
+module.exports = { runAsyncronusPromise, getUser };
