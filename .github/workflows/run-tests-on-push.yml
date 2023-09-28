@@ -1,9 +1,9 @@
-name: Run Tests and ESLint on Push
+name: Jalankan ESLint dan Jest saat Push
 
 on:
   push:
     branches:
-      - master  # Ganti dengan nama branch yang Anda inginkan
+      - main  # Ganti dengan nama branch yang Anda inginkan
 
 jobs:
   test:
@@ -13,22 +13,22 @@ jobs:
     - name: Checkout kode sumber
       uses: actions/checkout@v2
 
-    - name: Install dependencies
+    - name: Install dependensi
       run: npm install
 
-    - name: Run ESLint
+    - name: Jalankan ESLint
       run: npm run lint
 
-    - name: Run Jest Tests
+    - name: Jalankan Tes Jest
       run: npm run test --if-present
 
-    - name: Check ESLint and Jest exit codes
+    - name: Periksa Kode ESLint dan Keluaran Jest
       run: |
-        if [[ ${{ steps.Run ESLint.outcome }} == 'failure' ]]; then
-          echo "ESLint checks failed, preventing branch push!"
+        if [[ ${{ steps['Jalankan ESLint'].outcome }} == 'failure' ]]; then
+          echo "Kesalahan ESLint, mencegah push ke branch!"
           exit 1
         fi
-        if [[ ${{ steps.Run Jest Tests.outcome }} == 'failure' ]]; then
-          echo "Jest tests failed, preventing branch push!"
+        if [[ ${{ steps['Jalankan Tes Jest'].outcome }} == 'failure' ]]; then
+          echo "Tes Jest gagal, mencegah push ke branch!"
           exit 1
         fi
