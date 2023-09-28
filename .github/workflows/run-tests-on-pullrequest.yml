@@ -20,7 +20,7 @@ jobs:
       run: npm run lint
 
     - name: Run Jest Tests
-      run: npm run test --if-present
+      run: npm run test --if-present -- --coverage
 
     - name: Check ESLint and Jest exit codes
       run: |
