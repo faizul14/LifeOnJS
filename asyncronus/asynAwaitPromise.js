@@ -10,7 +10,7 @@ const withDrawMoney = (saldo) => new Promise((resolve, reject) => {
 
 const buyTicketBioskop = (money) => new Promise((resolve, reject) => {
         setTimeout(() => {
-            if (money > 10) {
+            if (money < 10) {
                 reject(new Error('Tidak bisa membeli ticket, uang tidak cukup'));
                 return;
             }
@@ -28,20 +28,26 @@ const goInsideCinema = (ticket) => new Promise((resolve, reject) => {
         }, 1000);
 });
 
-const resultWatchOrNot = async () => {
+const resultWatchOrNot = async (money) => {
     try {
-        const getMoney = await withDrawMoney(101);
+        const getMoney = await withDrawMoney(money);
         const getBuyTicket = await buyTicketBioskop(getMoney);
         const getGInsdeCamera = await goInsideCinema(getBuyTicket);
 
         console.log(getGInsdeCamera);
+        return getGInsdeCamera;
     } catch (error) {
         console.log(error.message);
+        return error.message;
     }
 };
 
-const runAsynAwaitPromise = () => {
-    resultWatchOrNot();
-};
+const runAsynAwaitPromise = () => resultWatchOrNot(100);
 
-module.exports = { runAsynAwaitPromise };
+module.exports = {
+    runAsynAwaitPromise,
+    resultWatchOrNot,
+    withDrawMoney,
+    buyTicketBioskop,
+    goInsideCinema,
+};
