@@ -15,11 +15,6 @@ jobs:
       with:
         node-version: 16  # Ganti dengan versi Node.js yang diinginkan
 
-
-    steps:
-    - name: Checkout kode sumber
-      uses: actions/checkout@v2
-
     - name: Install dependensi
       run: npm install
 
