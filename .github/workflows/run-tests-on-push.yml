@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16  # Ganti dengan versi Node.js yang diinginkan
+
+
+    steps:
     - name: Checkout kode sumber
       uses: actions/checkout@v2
 
