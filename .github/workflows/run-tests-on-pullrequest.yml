@@ -1,4 +1,4 @@
-name: Run Tests and ESLint
+name: Jalankan ESLint dan Jest saat Push
 
 on:
   pull_request:
@@ -13,22 +13,22 @@ jobs:
     - name: Checkout kode sumber
       uses: actions/checkout@v2
 
-    - name: Install dependencies
+    - name: Install dependensi
       run: npm install
 
-    - name: Run ESLint
+    - name: Jalankan ESLint
       run: npm run lint
 
-    - name: Run Jest Tests
-      run: npm run test --if-present -- --coverage
+    - name: Jalankan Tes Jest
+      run: npm run test --if-present
 
-    - name: Check ESLint and Jest exit codes
+    - name: Periksa Kode ESLint dan Keluaran Jest
       run: |
-        if [[ ${{ steps.Run ESLint.outcome }} == 'failure' ]]; then
-          echo "ESLint checks failed, preventing branch merge!"
+        if [[ ${{ steps['Jalankan ESLint'].outcome }} == 'failure' ]]; then
+          echo "Kesalahan ESLint, mencegah push ke branch!"
           exit 1
         fi
-        if [[ ${{ steps.Run Jest Tests.outcome }} == 'failure' ]]; then
-          echo "Jest tests failed, preventing branch merge!"
+        if [[ ${{ steps['Jalankan Tes Jest'].outcome }} == 'failure' ]]; then
+          echo "Tes Jest gagal, mencegah push ke branch!"
           exit 1
         fi
