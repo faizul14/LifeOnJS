@@ -16,7 +16,9 @@ jobs:
         node-version: 16  # Ganti dengan versi Node.js yang diinginkan
 
     - name: Install dependensi
-      run: npm install
+      run: |
+        cd ..  # Pindah satu tingkat ke direktori proyek utama
+        npm install
 
     - name: Jalankan ESLint
       run: npm run lint
