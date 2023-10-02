@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1695938112091" clover="3.2.0">
-  <project timestamp="1695938112092" name="All files">
+<coverage generated="1695966015503" clover="3.2.0">
+  <project timestamp="1695966015503" name="All files">
     <metrics statements="40" coveredstatements="39" conditionals="9" coveredconditionals="8" methods="17" coveredmethods="16" elements="66" coveredelements="63" complexity="0" loc="40" ncloc="40" packages="1" files="2" classes="2"/>
     <file name="asynAwaitPromise.js" path="/home/mpfaezol/Documents/GO BACKEND/JavaScript Promise/asyncronus/asynAwaitPromise.js">
       <metrics statements="29" coveredstatements="29" conditionals="6" coveredconditionals="6" methods="11" coveredmethods="11"/>
